@@ -14,7 +14,6 @@ namespace Unit02.Game
     public class Card
     {
         public int _cardValue = 0;
-        public int _cardNextValue = 0;
 
         /// <summary>
         /// Constructs a new instance of Card.
@@ -22,21 +21,22 @@ namespace Unit02.Game
 
         public Card()
         {
+
         }
         
         /// <summary>
-        /// Generates a random card from 1 to 13. Then, generates another random card
-        /// from 1 to 13. And store the value.
+        /// Generates a random card from 1 to 13.
+        /// And store the value.
         ///  
         /// </summary>
 
-        public void Roll()
+        public int Draw()
         {
             Random random = new Random();
             _cardValue = random.Next(1, 13);
-            Console.WriteLine(_cardValue);
-            _cardNextValue = random.Next(1, 13);
+            return _cardValue;
         }
+
     }
 
 }
