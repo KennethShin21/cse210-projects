@@ -13,9 +13,6 @@ namespace Unit02.Game
     {
         bool _isPlaying = true;
         int _score = 300;
-        string _userGuess = "";
-        int _currentCard = 0;
-        int _nextCard = 0;
 
         /// <summary>
         /// Constructs a new instance of Director.
@@ -43,9 +40,13 @@ namespace Unit02.Game
         /// </summary>
         public void GetInputs()
         {
-            Console.Write("Play again? [y/n] ");
-            string playAgain = Console.ReadLine();
-            _isPlaying = (playAgain == "y");
+            Console.Write("Draw a Card? [y/n] ");
+            string drawCard = Console.ReadLine();
+            _isPlaying = (drawCard == "y");
+            if (drawCard == "n")
+            {
+                Console.WriteLine("Thanks for playing the game! :) ");
+            }
         }
 
         /// <summary>
@@ -57,13 +58,17 @@ namespace Unit02.Game
             {
                 return;
             }
+            
+            int _currentCard = 0;
+            int _nextCard = 0;
 
-            _score = 300;
             Card card = new Card();
             _currentCard = card.Draw();
             Console.WriteLine($"The current card is: {_currentCard}");
-            Console.Write("Higher or Lower? [h/l]");
+
+            Console.Write("Higher or Lower? [h/l] ");
             string _userGuess = Console.ReadLine();
+
             _nextCard = card.Draw();
             Console.WriteLine($"Next card was: {_nextCard}");
 
@@ -103,6 +108,11 @@ namespace Unit02.Game
             }
             Console.WriteLine($"Your score is: {_score}\n");
             _isPlaying = (_score > 0);
+            if (_score <= 0)
+            {
+                Console.WriteLine("Try again next time! Game over.");
+            }
+
         }
     }
 }
