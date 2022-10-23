@@ -48,7 +48,7 @@ namespace Unit03.Game
             Console.Write("\nThanks for playing!! ");
 
         }
-///A funtion to display the the hint and the parachute.
+///A function to display the the hint and the parachute.
         public void Display(string[] hint, string[] parachute)
         {
             foreach (string i in hint){
