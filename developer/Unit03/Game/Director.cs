@@ -39,7 +39,7 @@ namespace Unit03.Game
                         counter +=1;
                     } 
                 };
-                if (counter == 4){
+                if (counter == 5){
                     isPlaying = false;                    
                 }
             }
@@ -48,7 +48,7 @@ namespace Unit03.Game
             Console.Write("\nThanks for playing!! ");
 
         }
-///This is funtion will help us to show the board of our game. 
+///A funtion to display the the hint and the parachute.
         public void Display(string[] hint, string[] parachute)
         {
             foreach (string i in hint){
@@ -59,7 +59,7 @@ namespace Unit03.Game
                 Console.Write($"\n{i}"); 
             }
         }
-///This is funtion will help us to take the letter that the player typped.
+///A function to get a letter input from the user. 
 
         public string GetInputs()
         {
@@ -68,7 +68,7 @@ namespace Unit03.Game
             string input = Console.ReadLine();
             return input;        
         }
-///Here we will update the word, we will se if the player guess correctly and we will change some values.  
+///A function if the player guessed the correct letter. 
         private string[] DoUpdates(string letter, string[] hint, string word)
         {
             int control = word.IndexOf(letter);
@@ -88,7 +88,7 @@ namespace Unit03.Game
             }
            return life;
         }
-///Here we will change the men if the player did not get the right answer. 
+///Here we will update the parachute if the player did not get the right answer. 
 
         private string[] DoUpdatesParachute(string letter,string word, int life, string[] parachute)
         {

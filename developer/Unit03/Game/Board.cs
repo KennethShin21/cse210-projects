@@ -11,12 +11,12 @@ namespace Unit03.Game
         {
             string[] words = 
             {
-                "boat",
-                "home",
-                "hand",
-                "show",
-                "alex",
-                "ring"
+                "rude",
+                "love",
+                "sick",
+                "snow",
+                "blow",
+                "show"
             };          
 
             ///Here we will take just one word of our list and return that word.          
