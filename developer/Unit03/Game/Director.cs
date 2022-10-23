@@ -1,21 +1,21 @@
 using System;
-///This is the program that unify all the classes in our game.  
+///This is the Director who controls the sequence of the play. 
 namespace Unit03.Game
 {
     public class Director
     {
-
+        private bool isPlaying = true;
+        private WordBank _wordBank = new WordBank();
+        private Jumper _jumper = new Jumper();
 
         public Director()
         {
         }
         public void StartGame()
-        {
-            bool isPlaying = true;
+        {  
             int life = 5;
-            WordBank _wordBank = new WordBank();
+
             string word = _wordBank.Words();
-            Jumper _jumper = new Jumper();
             string[] parachute = _jumper.DisplayParachute();
             string[] gameOver = _jumper.GameOver();
             string[] hint = _jumper.Hint();
@@ -26,40 +26,38 @@ namespace Unit03.Game
                 string letter = GetInputs();
                 hint = DoUpdates(letter,hint,word);
                 life = DoUpdatesLife(letter,word,life);
-                parachute = DoUpdatesMen(letter,word,life,parachute);
+                parachute = DoUpdatesParachute(letter,word,life,parachute);
                 
                 if (life <= 0){
                     isPlaying = false;
                 }
 
-                int contador = 0;
+                int counter = 0;
                 foreach (string i in hint){
                     int control = i.IndexOf("_");
                     if (control<0){
-                        contador +=1;
+                        counter +=1;
                     } 
                 };
-                if (contador == 4){
+                if (counter == 4){
                     isPlaying = false;                    
                 }
             }
             foreach (string i in gameOver){
                 Console.Write($"\n{i}");}
-            Console.Write("\n^^^^^^^^^^^^");
             Console.Write("\nThanks for playing!! ");
 
         }
 ///This is funtion will help us to show the board of our game. 
-        public void Display(string[] space, string[] men)
+        public void Display(string[] hint, string[] parachute)
         {
-            foreach (string i in space){
+            foreach (string i in hint){
                 Console.Write(i);
             }                    
             Console.Write("\n");
-            foreach (string i in men){
+            foreach (string i in parachute){
                 Console.Write($"\n{i}"); 
             }
-            Console.Write("\n^^^^^^^^^^^^");
         }
 ///This is funtion will help us to take the letter that the player typped.
 
@@ -71,15 +69,15 @@ namespace Unit03.Game
             return input;        
         }
 ///Here we will update the word, we will se if the player guess correctly and we will change some values.  
-        private string[] DoUpdates(string letter, string[] space, string word)
+        private string[] DoUpdates(string letter, string[] hint, string word)
         {
             int control = word.IndexOf(letter);
 
             if (control >= 0){
-            space[control] = letter;
+            hint[control] = letter;
            }
 ///Here we will update the life to see if the player can continue with the game. 
-           return space;
+           return hint;
         }
         private int DoUpdatesLife(string letter,string word, int life)
         {
@@ -92,15 +90,15 @@ namespace Unit03.Game
         }
 ///Here we will change the men if the player did not get the right answer. 
 
-        private string[] DoUpdatesMen(string letter,string word, int life, string[] men)
+        private string[] DoUpdatesParachute(string letter,string word, int life, string[] parachute)
         {
             int control = word.IndexOf(letter);
 
             if (control < 0){
                 int index = (5 - life) - 1;
-                men[index] = "";
+                parachute[index] = "";
             }
-           return men;
+           return parachute;
         }
     }
 }

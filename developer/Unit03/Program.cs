@@ -1,4 +1,4 @@
-﻿namespace Jumper
+﻿namespace Unit03.Game
 ///This class is the class that call the code and makes our code funtion with main. 
 {
     class Program
