@@ -1,69 +1,104 @@
-namespace Unit03.Game
+using System;
+///This is the program that unify all the classes in our game.  
+namespace Jumper
 {
-    /// <summary>
-    /// <para>A person who directs the game.</para>
-    /// <para>
-    /// The responsibility of a Director is to control the sequence of play.
-    /// </para>
-    /// </summary>
-    public class Director
-    {
-        private Jumper _jumper = new Jumper();
-        private bool _isPlaying = true;
-        private Board _board = new Board();
-        private WordBank _wordBank = new WordBank();
-        private TerminalService _terminalService = new TerminalService();
+    public class Director{
 
-        /// <summary>
-        /// Constructs a new instance of Director.
-        /// </summary>
         public Director()
         {
         }
-
-        /// <summary>
-        /// Starts the game by running the main game loop.
-        /// </summary>
         public void StartGame()
         {
-            while (_isPlaying)
-            {
-                GetInputs();
-                DoUpdates();
-                DoOutputs();
+            bool isPlaying = true;
+            int life = 4;
+            WordBank wordBank = new WordBank();
+            string word = wordBank.Words();
+            Board board = new Board();
+            string[] parachute = board.DisplayParachute();
+            string[] noParachute = board.GameOver();
+            string[] hint = board.Hint();
+
+            while (isPlaying)
+            {                
+                Display(hint,parachute);
+                string letter = GetInputs();
+                hint = DoUpdates(letter,hint,word);
+                life = DoUpdatesLife(letter,word,life);
+                parachute = DoUpdatesMen(letter,word,life,parachute);
+                
+                if (life <= 0){
+                    isPlaying = false;
+                }
+
+                int contador = 0;
+                foreach (string i in hint){
+                    int control = i.IndexOf("_");
+                    if (control<0){
+                        contador +=1;
+                    } 
+                };
+                if (contador == 4){
+                    isPlaying = false;                    
+                }
             }
-        }
+            foreach (string i in noParachute){
+                Console.Write($"\n{i}");}
+            Console.Write("\n^^^^^^^^^^^^");
+            Console.Write("\nThanks for playing!! ");
 
-        /// <summary>
-        /// Moves the seeker to a new location.
-        /// </summary>
-        private void GetInputs()
-        {
-            _terminalService.WriteText(_hider._location.ToString());
-            int location = _terminalService.ReadNumber("\nEnter a location [1-1000]: ");
-            _seeker.MoveLocation(location);
         }
-
-        /// <summary>
-        /// Keeps watch on where the seeker is moving.
-        /// </summary>
-        private void DoUpdates()
+///This is funtion will help us to show the board of our game. 
+        public void Display(string[] space, string[] men)
         {
-            _hider.WatchSeeker(_seeker);
-        }
-
-        /// <summary>
-        /// Provides a hint for the seeker to use.
-        /// </summary>
-        private void DoOutputs()
-        {
-            string hint = _hider.GetHint();
-            _terminalService.WriteText(hint);
-            if (_hider.IsFound())
-            {
-                _isPlaying = false;
+            foreach (string i in space){
+                Console.Write(i);
+            }                    
+            Console.Write("\n");
+            foreach (string i in men){
+                Console.Write($"\n{i}"); 
             }
-            
+            Console.Write("\n^^^^^^^^^^^^");
+        }
+///This is funtion will help us to take the letter that the player typped.
+
+        public string GetInputs()
+        {
+            Console.Write("\n");
+            Console.Write("\nGuess the letter [a-z]: ");
+            string input = Console.ReadLine();
+            return input;        
+        }
+///Here we will update the word, we will se if the player guess correctly and we will change some values.  
+        private string[] DoUpdates(string letter, string[] space, string word)
+        {
+            int control = word.IndexOf(letter);
+
+            if (control >= 0){
+            space[control] = letter;
+           }
+///Here we will update the life to see if the player can continue with the game. 
+           return space;
+        }
+        private int DoUpdatesLife(string letter,string word, int life)
+        {
+            int control = word.IndexOf(letter);
+
+            if (control < 0){
+                life-=1;
+            }
+           return life;
+        }
+///Here we will change the men if the player did not get the right answer. 
+
+        private string[] DoUpdatesMen(string letter,string word, int life, string[] men)
+        {
+            int control = word.IndexOf(letter);
+
+            if (control < 0){
+                int index = (5 - life) - 1;
+                men[index] = "";
+            }
+           return men;
         }
     }
 }

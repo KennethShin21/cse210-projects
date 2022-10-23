@@ -1,50 +1,46 @@
 using System;
-using System.Collections.Generic;
-
-
-namespace Unit03.Game 
+///Here we have the board of our game. Here we will create the men and the spaces for our game.
+namespace Jumper
 {
-    ///<summary>
-    /// <para>The jumper with his parachute.</para>
-    /// <para>
-    /// The responsibility of Jumper is to display the parachute and to contain
-    /// the value of remaining guesses. 
-    /// </para>
-    /// </summary>
-
-    public class Jumper
-    {
-        private int _remainingGuesses = 4;
-        private List<string> _displayList = new List<string>();
-    
-
-        /// <summary>
-        /// Constructs a new instance of Jumper. 
-        /// </summary>
-        public Jumper()
-        {
+    public class Board {
+        public Board()
+        {            
         }
 
-
-        ///<summary>
-
-        ///</summary>
-
-        public string GetDisplayText()
+        public string[] DisplayParachute()
         {
+            string[] parachute = {
+                "  ___"," |___|",
+                " L   J",
+                "  I I",
+                "   O",
+                "  J|L","   JL",
+                "          ",
+                "^^^^^^^^"};
 
+                  return parachute;
         }
-
-        public void CutRope()
+        public string[] GameOver()
         {
-        }
+            string[] noParachute = {
+                "   X",
+                "  J|L","   JL",
+                "          ",
+                "^^^^^^^^"};
 
-        public bool IsAlive()
+                  return noParachute;
+        }
+        public string[] Hint()
         {
-            
+            string[] hint = {
+                "_ ",
+                "_ ",
+                "_ ",
+                "_ ",
+                "_ "
+            };
+
+            return hint;
         }
-
-
     }
-
 }
