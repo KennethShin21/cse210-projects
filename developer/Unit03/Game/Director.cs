@@ -8,9 +8,10 @@ namespace Unit03.Game
     /// </summary>
     public class Director
     {
-        private Hider _hider = new Hider();
+        private Jumper _jumper = new Jumper();
         private bool _isPlaying = true;
-        private Seeker _seeker = new Seeker();
+        private Board _board = new Board();
+        private WordBank _wordBank = new WordBank();
         private TerminalService _terminalService = new TerminalService();
 
         /// <summary>
@@ -41,7 +42,6 @@ namespace Unit03.Game
             _terminalService.WriteText(_hider._location.ToString());
             int location = _terminalService.ReadNumber("\nEnter a location [1-1000]: ");
             _seeker.MoveLocation(location);
-            
         }
 
         /// <summary>
