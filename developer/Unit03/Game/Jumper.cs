@@ -1,9 +1,10 @@
 using System;
 ///Here we have the board of our game. Here we will create the men and the spaces for our game.
-namespace Jumper
+namespace Unit03.Game
 {
-    public class Board {
-        public Board()
+    public class Jumper 
+    {
+        public Jumper()
         {            
         }
 
@@ -37,7 +38,6 @@ namespace Jumper
                 "_ ",
                 "_ ",
                 "_ ",
-                "_ "
             };
 
             return hint;

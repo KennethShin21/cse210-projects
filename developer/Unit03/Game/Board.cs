@@ -1,6 +1,6 @@
 using System;
 ///Here we have the list of words of our game. 
-namespace Jumper
+namespace Unit03.Game
 {
     public class WordBank {
 
@@ -9,8 +9,14 @@ namespace Jumper
         }
         public string Words()
         {
-            string[] words = {
-                "earth",
+            string[] words = 
+            {
+                "boat",
+                "home",
+                "hand",
+                "show",
+                "alex",
+                "ring"
             };          
 
             ///Here we will take just one word of our list and return that word.          
