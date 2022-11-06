@@ -2,6 +2,9 @@
 
 Greed is a game in which the player seeks to gather as many falling gems as possible. The game continues as long as the player wants more!
 
+Getting more gems increases your score, while getting the rocks will decrease your score. 
+
+
 ---
 ## Getting Started
 Make sure you have dotnet 6.0 or newer installed on your machine. Open 
