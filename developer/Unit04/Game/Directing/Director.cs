@@ -9,7 +9,8 @@ namespace CSE210_Greed.Game.Directing
     /// The person who directs the game.
     /// Responsibility: Control the steps of the game.
     /// </summary>
-    public class Director{
+    public class Director
+    {
         private KeyboardService keyboardService = null;
         private VideoService videoService = null;
         private int playerScore = 0;
@@ -41,7 +42,8 @@ namespace CSE210_Greed.Game.Directing
         /// with the proper actors)</param>
         public void StartGame(Cast cast){
             videoService.OpenWindow();
-            while (videoService.IsWindowOpen()){
+            while (videoService.IsWindowOpen())
+            {
                 GetInputs(cast);
                 DoUpdates(cast);
                 DoOutputs(cast);
@@ -56,7 +58,7 @@ namespace CSE210_Greed.Game.Directing
         /// <param name="cast">The passed instance of cast</param>
         private void GetInputs(Cast cast){
             Actor robot = cast.GetFirstActor("robot");
-            Location velocity = keyboardService.GetDirection();
+            Point velocity = keyboardService.GetDirection();
             robot.SetVelocity(velocity);
         }
 
@@ -82,7 +84,8 @@ namespace CSE210_Greed.Game.Directing
                 Mineral mineral = (Mineral) actor; //look into
                 bool isCaughtRecently = false;
                 
-                if (robot.GetPosition().Equals(mineral.GetPosition())){
+                if (robot.GetPosition().Equals(mineral.GetPosition()))
+                {
                     //set dialogue to the artifact's message.
                     dialogueBanner.SetText(mineral.GetMessage());
                     
@@ -90,7 +93,7 @@ namespace CSE210_Greed.Game.Directing
                     playerScore += mineral.GetPointValue();
                     
                     //move artifact to just above the top
-                    Location position = new Location(random.Next(1, COLS), 1);
+                    Point position = new Point(random.Next(1, COLS), 1);
                     position = position.Scale(CELL_SIZE);
                     mineral.SetPosition(position);
                     isCaughtRecently = true;

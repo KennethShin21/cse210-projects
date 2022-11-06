@@ -22,7 +22,7 @@ namespace CSE210_Greed.Game.Services
         /// <summary>
         /// Converts keyboard presses into movement.
         /// </summary>
-        public Location GetDirection(string downText = "")
+        public Point GetDirection(string downText = "")
         {
             int dx = 0;
             int dy = 0;
@@ -30,7 +30,7 @@ namespace CSE210_Greed.Game.Services
             if (downText == "down")
             {
                 dy = 1;
-                Location direction1 = new Location(dx, dy);
+                Point direction1 = new Point(dx, dy);
                 direction1 = direction1.Scale(cellSize);
 
                 return direction1;
@@ -47,7 +47,7 @@ namespace CSE210_Greed.Game.Services
             }
 
 
-            Location direction = new Location(dx, dy);
+            Point direction = new Point(dx, dy);
             direction = direction.Scale(cellSize);
 
             return direction;

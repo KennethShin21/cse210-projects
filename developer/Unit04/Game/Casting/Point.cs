@@ -1,6 +1,6 @@
 namespace CSE210_Greed.Game.Casting
 {
-    public class Location
+    public class Point
     {
         private int x = 0;
         private int y = 0;
@@ -10,7 +10,7 @@ namespace CSE210_Greed.Game.Casting
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public Location(int x, int y)
+        public Point(int x, int y)
         {
             this.x = x;
             this.y = y;
@@ -21,11 +21,11 @@ namespace CSE210_Greed.Game.Casting
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public Location Add(Location other)
+        public Point Add(Point other)
         {
             int x = this.x + other.GetX();
             int y = this.y + other.GetY();
-            return new Location(x, y);
+            return new Point(x, y);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace CSE210_Greed.Game.Casting
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool Equals(Location other)
+        public bool Equals(Point other)
         {
             return this.x == other.GetX() && this.y == other.GetY();
         }
@@ -58,11 +58,11 @@ namespace CSE210_Greed.Game.Casting
         /// </summary>
         /// <param name="factor"></param>
         /// <returns></returns>
-        public Location Scale(int factor)
+        public Point Scale(int factor)
         {
             int x = this.x * factor;
             int y = this.y * factor;
-            return new Location(x, y);
+            return new Point(x, y);
         }
 
 

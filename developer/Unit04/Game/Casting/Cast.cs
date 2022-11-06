@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 
-namespace CSE210_Greed.Game.Casting{
-    public class Cast{
+namespace CSE210_Greed.Game.Casting
+{
+    public class Cast
+    {
         private Dictionary<string, List<Actor>> actors = new Dictionary<string, List<Actor>>();
 
         /// <summary>
@@ -14,12 +16,15 @@ namespace CSE210_Greed.Game.Casting{
         /// </summary>
         /// <param name="group">The name of the group to be added to</param>
         /// <param name="actor">The instance of Actor to add</param>            
-        public void AddActor(string group, Actor actor){ //if the key has not been added yet...
-            if (!actors.ContainsKey(group)){
+        public void AddActor(string group, Actor actor)
+        { //if the key has not been added yet...
+            if (!actors.ContainsKey(group))
+            {
                 actors[group] = new List<Actor>();
             }
 
-            if (!actors[group].Contains(actor)){ //if the list associated with the key does not already contain the specified instance of actor...
+            if (!actors[group].Contains(actor))
+            { //if the list associated with the key does not already contain the specified instance of actor...
                 actors[group].Add(actor);
             }
         }
@@ -29,9 +34,11 @@ namespace CSE210_Greed.Game.Casting{
         /// </summary>
         /// <param name="group">The group name</param>
         /// <returns>the list of actors, or an empty list if there aren't any</returns>
-        public List<Actor> GetAllActors(){
+        public List<Actor> GetAllActors()
+        {
             List<Actor> results = new List<Actor>();
-            foreach (List<Actor> result in actors.Values){
+            foreach (List<Actor> result in actors.Values)
+            {
                 results.AddRange(result);
             }
             return results;
@@ -42,9 +49,11 @@ namespace CSE210_Greed.Game.Casting{
         /// </summary>
         /// <param name="group">The group name</param>
         /// <returns>The actors in the given group, or an empty list if there aren't any</returns>
-        public List<Actor> GetActors(string group){
+        public List<Actor> GetActors(string group)
+        {
             List<Actor> results = new List<Actor>();
-            if (actors.ContainsKey(group)){
+            if (actors.ContainsKey(group))
+            {
                 results.AddRange(actors[group]);
             }
             return results;
@@ -55,9 +64,11 @@ namespace CSE210_Greed.Game.Casting{
         /// </summary>
         /// <param name="group">The given group</param>
         /// <returns>The first actor in the given group</returns>
-        public Actor GetFirstActor(string group){
+        public Actor GetFirstActor(string group)
+        {
             Actor result = null;
-            if (actors.ContainsKey(group)){
+            if (actors.ContainsKey(group))
+            {
                 if (actors[group].Count > 0){
                     result = actors[group][0];
                 }
@@ -70,8 +81,10 @@ namespace CSE210_Greed.Game.Casting{
         /// </summary>
         /// <param name="group">The given group</param>
         /// <param name="actor">The given actor (will be removed)</param>
-        public void RemoveActor(string group, Actor actor){
-            if (actors.ContainsKey(group)){
+        public void RemoveActor(string group, Actor actor)
+        {
+            if (actors.ContainsKey(group))
+            {
                 actors[group].Remove(actor);
             }
         }

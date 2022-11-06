@@ -7,8 +7,8 @@ namespace CSE210_Greed.Game.Casting
         private string text = " ";
         private int fontSize = 15;
         private Color color = new Color(255, 255, 255, 255);
-        private Location position = new Location(0, 0);
-        private Location velocity = new Location(0, 0);
+        private Point position = new Point(0, 0);
+        private Point velocity = new Point(0, 0);
 
         /// <summary>
         /// Creates a new instance of actor
@@ -36,7 +36,7 @@ namespace CSE210_Greed.Game.Casting
         /// <summary>
         /// returns the position for the different instances of actor
         /// </summary>
-        public Location GetPosition()
+        public Point GetPosition()
         {
             return position;
         }
@@ -52,7 +52,7 @@ namespace CSE210_Greed.Game.Casting
         /// <summary>
         /// returns the velocity for the different instances of actor
         /// </summary>
-        public Location GetVelocity()
+        public Point GetVelocity()
         {
             return velocity;
         }
@@ -67,7 +67,7 @@ namespace CSE210_Greed.Game.Casting
         {
             int x = ((position.GetX() + velocity.GetX()) + maxX) % maxX;
             int y = ((position.GetY() + velocity.GetY()) + maxY) % maxY;
-            position = new Location(x, y);
+            position = new Point(x, y);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace CSE210_Greed.Game.Casting
         /// Sets the position for the instance of actor
         /// </summary>
         /// <param name="position"></param>
-        public void SetPosition(Location position)
+        public void SetPosition(Point position)
         {
             this.position = position;
         }
@@ -101,7 +101,7 @@ namespace CSE210_Greed.Game.Casting
         /// Sets the velocity for the instance of actor
         /// </summary>
         /// <param name="velocity"></param>
-        public void SetVelocity(Location velocity)
+        public void SetVelocity(Point velocity)
         {
             this.velocity = velocity;
         }

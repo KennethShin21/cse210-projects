@@ -12,7 +12,8 @@ namespace CSE210_Greed.Game.Casting
 
 
 
-            public Color (int red, int green, int blue, int alpha){ /// setting colors with names and their corresponding colors
+            public Color (int red, int green, int blue, int alpha)
+            { /// setting colors with names and their corresponding colors
                 this.red = red;
                 this.green = green;
                 this.blue = blue;
@@ -20,23 +21,26 @@ namespace CSE210_Greed.Game.Casting
 
             }
 
-            public int GetBlue(){ /// makes blue usable
+            public int GetBlue()
+            { /// makes blue usable
                 return blue;
 
             }
 
-            public int GetGreen(){ /// makes green usable
+            public int GetGreen()
+            { /// makes green usable
                 return green;
 
             }
 
             public int GetRed() /// makes red usable
-    {
+            {
                 return red;
 
             }
 
-            public int GetAlpha(){ /// makes alpha usable
+            public int GetAlpha()
+            { /// makes alpha usable
                 return alpha;
 
             }

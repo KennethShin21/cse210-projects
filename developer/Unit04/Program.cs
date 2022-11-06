@@ -23,8 +23,8 @@ namespace CSE210_Greed
         private static string CAPTION = "Greed";
         private static Color WHITE = new Color(255, 255, 255, 255);
         private static Color BANNER_WHITE = new Color(255, 255, 255, 150);
-        private static int DEFAULT_GEMS = 40;
-        private static int DEFAULT_ROCKS = 100;
+        private static int DEFAULT_GEMS = 10;
+        private static int DEFAULT_ROCKS = 10;
         private static int FALL_SPEED_CAP = 3; //the fall speed indicates the chance for delay in falling
 
         /// <summary>
@@ -41,22 +41,22 @@ namespace CSE210_Greed
             scoreBanner.SetText("");
             scoreBanner.SetFontSize(FONT_SIZE);
             scoreBanner.SetColor(BANNER_WHITE);
-            scoreBanner.SetPosition(new Location(CELL_SIZE, 0));
+            scoreBanner.SetPosition(new Point(CELL_SIZE, 0));
             cast.AddActor("banner", scoreBanner);
 
             Actor dialogueBanner = new Actor();
             dialogueBanner.SetText("");
             dialogueBanner.SetFontSize(FONT_SIZE);
             dialogueBanner.SetColor(BANNER_WHITE);
-            dialogueBanner.SetPosition(new Location(MAX_X / 2, 0));
+            dialogueBanner.SetPosition(new Point(MAX_X / 2, 0));
             cast.AddActor("banner", dialogueBanner);
 
-            //create the robot
+            //create the player
             Actor robot = new Actor();
             robot.SetText("#");
             robot.SetFontSize(FONT_SIZE);
             robot.SetColor(WHITE);
-            robot.SetPosition(new Location(MAX_X / 2, MAX_Y - CELL_SIZE));
+            robot.SetPosition(new Point(MAX_X / 2, MAX_Y - CELL_SIZE));
             cast.AddActor("robot", robot);
 
             //create the gems
@@ -65,7 +65,7 @@ namespace CSE210_Greed
 
                 int x = random.Next(1, COLS);
                 int y = 1;
-                Location position = new Location(x, y);
+                Point position = new Point(x, y);
                 position = position.Scale(CELL_SIZE);
 
                 int r = random.Next(0, 256);
@@ -89,7 +89,7 @@ namespace CSE210_Greed
             for (int i = 0; i < DEFAULT_ROCKS; i++){
                  int x = random.Next(1, COLS);
                 int y = 1;
-                Location position = new Location(x, y);
+                Point position = new Point(x, y);
                 position = position.Scale(CELL_SIZE);
 
                 int r = random.Next(0, 256);
