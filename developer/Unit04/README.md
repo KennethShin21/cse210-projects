@@ -31,6 +31,5 @@ root                    (project root folder)
 * dotnet 6.0
 * raylib-cs 3.7.0.1
 
-## Authors
-* Matt Manley (manleym@byui.edu)
-* Scott Burton (burtons@byui.edu)
+## Author
+* Kenneth Benting(kenneth.benting@gmail.com)
